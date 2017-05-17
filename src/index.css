@@ -2,4 +2,103 @@ body {
   margin: 0;
   padding: 0;
   font-family: sans-serif;
+  background-color: #FFF * 0.9;
+}
+
+.container{
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 1rem;
+}
+
+.welcome{
+  position: absolute;
+  width: 100%;
+  top: 35vh;
+
+  &_hidden{
+    display: none;
+  }
+
+  &__header{
+    text-align: center;
+    color: #aaa
+  }
+
+  &__goto-app{
+    display: block;
+    width: 200px;
+    height: 100px;
+    margin: 1rem auto;
+    background-color: green;
+    text-align: center;
+    line-height: 100px;
+    font-size: 1.5rem;
+    text-decoration: none;
+    color: #000;
+    box-shadow: 0px 10px 25px 0px rgba(0,0,0,0.3);
+    border-radius: 20px 100px;
+    color: #efe;
+  }
+}
+
+.todolist{
+  width: 100%;
+
+  &_hidden{
+    display: none;
+  }
+
+  &__input{
+    box-sizing: border-box;
+    display: block;
+    width: 100%;
+    padding: 1.3rem;
+    margin: 3rem auto;
+    font-size: 1.3rem;
+    border: none;
+    box-shadow: 0px 10px 25px 0px rgba(0,0,0,0.3);
+  }
+
+  &__list{
+    padding: 0;
+  }
+  
+  &__task{
+    display: block;
+    box-sizing: border-box;
+    padding: 1rem;
+    border-bottom: 1px solid #FFF * 0.8;
+    cursor: pointer;
+
+    &:hover{
+      background-color: #FFF * 0.8;
+    }
+
+    &:last-child{
+      border: none;
+    }
+  }
+
+  &__checkbox{
+    display: block;
+    float: left;
+  }
+
+  &__filter{
+    box-sizing: border-box;
+    display: block;
+    width: 100%;
+    padding: 1.3rem;
+    color: #aaa;
+    font-size: 1.3rem;
+    text-align: center;
+    cursor: pointer;
+    border: 1px dotted #FFF * 0.8;
+    box-shadow: 0px 30px 50px 0px rgba(0,0,0,0.05);
+    user-select: none;
+    &:hover{
+      // background-color: #FFF * 0.8;
+    }
+  }
 }

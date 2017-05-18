@@ -7,7 +7,6 @@ class InputField extends Component {
   }
   handleInputKey(event) {
     if (event.key === 'Enter'){
-      console.log(this.taskInput.value);
       this.props.onAddTrack({ title: this.taskInput.value });
       this.taskInput.value = '';
     }

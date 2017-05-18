@@ -1,31 +1,41 @@
 import React, { Component , PropTypes } from 'react';
 
 class Task extends Component {
-  static propTypes = {
-    title: PropTypes.string.isRequired,
-  }
-  constructor(props) {
-    super(props);
-    this.state = { isDone: false };
-    this.handleChangeState = this.handleChangeState.bind(this);
-  }
-
+  // static propTypes = {
+  //   title: PropTypes.string.isRequired,
+  // }
   handleChangeState() {
-    this.setState({ isDone: !this.state.isDone });
+    this.props.onCheck({ taskIndex: this.props.index, isDone: this.taskCheckbox.checked});
   }
-
+  handleDelete() {
+    this.props.onDelete({ taskIndex: this.props.index });
+  }
+  handleUpdate() {
+    const newTaskTitle = prompt('Как переименуем задачу?', this.props.title);
+    this.props.onUpdate({ taskIndex: this.props.index, taskTitle: newTaskTitle });
+  }
   render() {
-    return  <li className="todolist__task">
-              <input 
-                className="todolist__checked" 
-                type="checkbox"
-                checked={this.state.isDone}
-                onChange={this.handleChangeState}
-              />
-              <span className="todolist__list-text">{this.props.title}</span>
-              <button className="todolist__edit-task">Edit</button> 
-              <button className="todolist__delete-task">Delete</button>
-            </li>
+    let checked = () => {
+      if (this.props.isDone) {
+        return true;
+      } else {
+        return false;
+      }
+    }
+    return (
+      <li className="todolist__task">
+        <input 
+          className="todolist__checked" 
+          type="checkbox"
+          checked={checked()}
+          onChange={this.handleChangeState.bind(this)}
+          ref={(checkbox) => { this.taskCheckbox = checkbox; }}
+        />
+        <span className="todolist__list-text">{this.props.title}</span>
+        <button className="todolist__edit-task" onClick={this.handleUpdate.bind(this)}>Edit</button> 
+        <button className="todolist__delete-task" onClick={this.handleDelete.bind(this)}>Delete</button>
+      </li>
+    );
   }
 }
 

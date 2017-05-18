@@ -2,23 +2,11 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { createStore } from 'redux';
-import { TASKS } from './variables';
-
 import App from './App';
 import './index.scss';
+import reducer from './reducers';
 
-function playlist(state = TASKS, action) {
-  if (action.type === 'ADD_TASK') {
-    return [
-      ...state,
-      action.payload
-    ];
-  }
-  return state;
-}
-
-const store = createStore(playlist);
-
+const store = createStore(reducer, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
 
 ReactDOM.render(
   <Provider store={store}>

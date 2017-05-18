@@ -1,28 +1,36 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-// import logo from './logo.svg';
-import './App.css';
 import InputField from './components/InputField';
 import Task from './components/Task';
 import Filter from './components/Filter';
-// import { TASKS } from './variables';
 
 class App extends Component {
   render() {
-    console.log(this.props.testStore);
     return (
       <div className="container">
         <div className="todolist">
           <InputField onAddTrack={this.props.onAddTrack}/>
+          <ul className="todolist__list">
+            {
+              this.props.taskStore.map((el, index) => {
+                if (!el.isDone || (el.isDone && !this.props.isActiveFilterStore)) {
+                  return (
+                    <Task 
+                      onUpdate={this.props.onUpdate} 
+                      onDelete={this.props.onDelete} 
+                      onCheck={this.props.onCheck}
+                      index={index} 
+                      key={index} 
+                      title={el.title}
+                      isDone={el.isDone}
+                    />
+                  );
+                }
+              })
+            }
+          </ul>
+          <Filter onFilter={this.props.onFilter}/>
         </div>
-        <ul className="todolist__list">
-          {
-            this.props.testStore.map((el, index) => {
-              return <Task isDone={true} key={index} title={el.title}/>
-            })
-          }
-        </ul>
-        <Filter />
       </div>
     );
   }
@@ -30,11 +38,38 @@ class App extends Component {
 
 export default connect(
   state => ({
-    testStore: state
+    taskStore: state.task,
+    isActiveFilterStore: state.filter,
+    // taskStore() {
+    //   if (state.filter) {
+    //     return state.task
+    //   }
+    //    else {
+    //     let tasks = [];
+    //     state.task.map((el) => { 
+    //       if (!el.isDone) {
+    //         tasks.push(el);
+    //       }
+    //     })
+    //     return tasks;
+    //   }
+    // }
   }),
   dispatch => ({
     onAddTrack: (taskName) => {
-      dispatch({ type: 'ADD_TASK', payload: taskName })
-    }
+      dispatch({ type: 'ADD_TASK', title: taskName })
+    },
+    onDelete: (taskIndex) => {
+      dispatch({ type: 'DELETE_TASK', index: taskIndex })
+    },
+    onUpdate: (taskParams) => {
+      dispatch({ type: 'UPDATE_TASK', params: taskParams, })
+    },
+    onCheck: (taskParams) => {
+      dispatch({ type: 'CHECK_TASK', params: taskParams, })
+    },
+    onFilter: (isFilterActive) => {
+      dispatch({ type: 'FILTER_DONE_TASKS', params: isFilterActive, })
+    },
   })
 )(App);

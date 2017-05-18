@@ -7,12 +7,12 @@ class Filter extends Component {
   }
   changeState() {
     this.setState({ isFilterActive: !this.state.isFilterActive });
+    this.props.onFilter({ isFilterActive: !this.state.isFilterActive })
   }
   render() {
     if (this.state.isFilterActive) {
       return  <a href="#app/filter" className="todolist__filter" onClick={this.changeState.bind(this)}>Показать выполненные задания</a>
     } else {
-      // console.log(this.state.isFilterActive);
       return  <a href="#app/all" className="todolist__filter" onClick={this.changeState.bind(this)}>Скрыть выполненные задания</a>
     }
   }

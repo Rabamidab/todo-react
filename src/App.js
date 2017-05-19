@@ -13,6 +13,7 @@ class App extends Component {
           <ul className="todolist__list">
             {
               this.props.taskStore.map((el, index) => {
+                // Условие, смотрящее включен ли триггер аильтра по задачам, и в зависимости от этого выводящее таски
                 if (!el.isDone || (el.isDone && !this.props.isActiveFilterStore)) {
                   return (
                     <Task 

@@ -61,7 +61,7 @@ export default connect(
       dispatch({ type: 'ADD_TASK', title: taskName })
     },
     onDelete: (taskIndex) => {
-      dispatch({ type: 'DELETE_TASK', index: taskIndex })
+      dispatch({ type: 'DELETE_TASK', payload: taskIndex })
     },
     onUpdate: (taskParams) => {
       dispatch({ type: 'UPDATE_TASK', params: taskParams, })

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 
-class StartPage extends Component {
+export default class StartPage extends Component {
   render() {
     return (
       <div className="welcome">
@@ -11,5 +11,3 @@ class StartPage extends Component {
     );
   }
 }
-
-export default StartPage;

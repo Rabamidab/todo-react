@@ -1,41 +1,29 @@
 import { TASKS } from '../variables';
 import { handleActions } from 'redux-actions';
+import { ADD_TASK, DELETE_TASK, UPDATE_TASK, CHECK_TASK  } from '../constants/AppConstants'
 
 export default handleActions({
-    ['ADD_TASK']: (state, action) => [...state, action.title],
-    ['DELETE_TASK']: (state, action) => {
+    [ADD_TASK]: (state, action) => {
+      console.log(ADD_TASK)
+      console.log(action)
+      return [...state, action.title]
+    },
+    [DELETE_TASK]: (state, action) => {
+      console.log(DELETE_TASK)
+      console.log(action)
       state.splice(action.taskIndex, 1);
       return [...state];
     },
-    ['UPDATE_TASK']: (state, action) => {
+    [UPDATE_TASK]: (state, action) => {
+      console.log(UPDATE_TASK)
+      console.log(action)
       state.splice(action.params.taskIndex, 1, { title:action.params.taskTitle });
       return [...state];
     },
-    ['CHECK_TASK']: (state, action) => {
+    [CHECK_TASK]: (state, action) => {
+      console.log(CHECK_TASK)
+      console.log(action)
       state[action.params.taskIndex].isDone = action.params.isDone;
       return [...state];
     },
 }, TASKS);
-
-
-// export default function task(state = TASKS, action) {
-//   if (action.type === 'ADD_TASK') {
-//     return [
-//       ...state,
-//       action.title
-//     ];
-//   }
-//   if (action.type === 'DELETE_TASK') {
-//     state.splice(action.taskIndex, 1);
-//     return [...state];
-//   }
-//   if (action.type === 'UPDATE_TASK') {
-//     state.splice(action.params.taskIndex, 1, { title:action.params.taskTitle });
-//     return [...state];
-//   }
-//   if (action.type === 'CHECK_TASK') {
-//     state[action.params.taskIndex].isDone = action.params.isDone;
-//     return [...state];
-//   }
-//   return state;
-// }

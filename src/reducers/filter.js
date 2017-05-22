@@ -1,13 +1,6 @@
-// import { createAction } from 'redux-actions';
 import { handleActions } from 'redux-actions';
-
-// export default function filterTracks(state = false, action) {
-//   if (action.type === 'FILTER_DONE_TASKS') {
-//     return action.params.isFilterActive;
-//   }
-//   return state;
-// }
+import { FILTER_DONE_TASKS  } from '../constants/AppConstants'
 
 export default handleActions({
-    ['FILTER_DONE_TASKS']: (state, action) => action.params.isFilterActive,
+    [FILTER_DONE_TASKS]: (state, action) => action.params.isFilterActive,
 }, false);

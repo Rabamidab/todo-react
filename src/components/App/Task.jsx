@@ -1,16 +1,22 @@
 import React, { Component , PropTypes } from 'react';
 
-class Task extends Component {
-  // static propTypes = {
-  //   title: PropTypes.string.isRequired,
-  // }
-  handleChangeState() {
-    this.props.onCheck({ taskIndex: this.props.index, isDone: this.taskCheckbox.checked});
+export default class Task extends Component {
+  static propTypes = {
+    title: PropTypes.string.isRequired,
+    isDone: PropTypes.bool,
+    onDelete: PropTypes.func.isRequired,
+    onUpdate: PropTypes.func.isRequired,
   }
-  handleDelete() {
+  handleChangeState = () => {
+    this.props.onCheck({
+      taskIndex: this.props.index,
+      isDone: !this.props.isDone
+    });
+  }
+  handleDelete = () => {
     this.props.onDelete({ taskIndex: this.props.index });
   }
-  handleUpdate() {
+  handleUpdate = () => {
     const newTaskTitle = prompt('Как переименуем задачу?', this.props.title);
     this.props.onUpdate({ taskIndex: this.props.index, taskTitle: newTaskTitle });
   }
@@ -28,15 +34,12 @@ class Task extends Component {
           className="todolist__checked" 
           type="checkbox"
           checked={checked()}
-          onChange={this.handleChangeState.bind(this)}
-          ref={(checkbox) => { this.taskCheckbox = checkbox; }}
+          onChange={this.handleChangeState}
         />
         <span className="todolist__list-text">{this.props.title}</span>
-        <button className="todolist__edit-task" onClick={this.handleUpdate.bind(this)}>Edit</button> 
-        <button className="todolist__delete-task" onClick={this.handleDelete.bind(this)}>Delete</button>
+        <button className="todolist__edit-task" onClick={this.handleUpdate}>Edit</button> 
+        <button className="todolist__delete-task" onClick={this.handleDelete}>Delete</button>
       </li>
     );
   }
 }
-
-export default Task;

@@ -2,15 +2,15 @@ import { createAction } from 'redux-actions';
 import { ADD_TASK, DELETE_TASK, UPDATE_TASK, CHECK_TASK, FILTER_DONE_TASKS  } from '../constants/AppConstants';
 
 export const onAddTrack = createAction(
-  ADD_TASK, (taskName) => { { taskName } }
+  ADD_TASK, (taskName) => { return { taskName } }
 );
 
 export const onDelete = createAction(
-  DELETE_TASK, (taskIndex) => { { taskIndex } }
+  DELETE_TASK, (taskIndex) => { return { taskIndex } }
 );
 
 export const onUpdate = createAction(
-  UPDATE_TASK, (taskParams) => { { taskParams } }
+  UPDATE_TASK, (taskParams) => { return { taskParams } }
 );
 
 export const onCheck = createAction(

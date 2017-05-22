@@ -9,7 +9,7 @@ export default class InputField extends Component {
   }
   handleInputKey = (event) => {
     if (event.key === 'Enter'){
-      this.props.onAddTrack({ title: this.state.value });
+      this.props.onAddTrack(this.state.value);
       this.setState({ value: '' })
     }
   }

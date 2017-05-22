@@ -6,7 +6,7 @@ export default class Filter extends Component {
     onFilter: PropTypes.func.isRequired,
   }
   changeState = () => {
-    this.props.onFilter({ isFilterActive: !this.props.isActiveFilterStore })
+    this.props.onFilter({ bool: !this.props.isActiveFilterStore })
   }
   render() {
     if (this.props.isActiveFilterStore) {

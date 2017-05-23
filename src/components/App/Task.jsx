@@ -8,6 +8,10 @@ export default class Task extends Component {
     onDelete: PropTypes.func.isRequired,
     onUpdate: PropTypes.func.isRequired,
   }
+  static defaultProps = {
+    ...Component.defaultProps,
+    isDone: false,
+  }
   handleChangeState = () => {
     this.props.onCheck({
       taskIndex: this.props.index,
@@ -15,26 +19,19 @@ export default class Task extends Component {
     });
   }
   handleDelete = () => {
-    this.props.onDelete({ taskIndex: this.props.index });
+    this.props.onDelete({ id: this.props.index });
   }
   handleUpdate = () => {
     const newTaskTitle = prompt('Как переименуем задачу?', this.props.title);
     this.props.onUpdate({ taskIndex: this.props.index, taskTitle: newTaskTitle });
   }
   render() {
-    let checked = () => {
-      if (this.props.isDone) {
-        return true;
-      } else {
-        return false;
-      }
-    }
     return (
       <li className="todolist__task">
         <input 
           className="todolist__checked" 
           type="checkbox"
-          checked={checked()}
+          checked={this.props.isDone}
           onChange={this.handleChangeState}
         />
         <span className="todolist__list-text">{this.props.title}</span>

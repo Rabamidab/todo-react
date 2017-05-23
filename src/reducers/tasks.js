@@ -2,28 +2,34 @@ import { TASKS } from '../variables';
 import { handleActions } from 'redux-actions';
 import { ADD_TASK, DELETE_TASK, UPDATE_TASK, CHECK_TASK  } from '../constants/AppConstants'
 
+const index = (state, index) => {
+  for (var i = 0; i < state.length; i++) {
+    if (state[i].id === index) {
+      return i;
+    }
+  }
+}
+
 export default handleActions({
     [ADD_TASK]: (state, action) => {
-      console.log(ADD_TASK)
-      console.log(action.payload.taskName)
-      return [...state, { title: action.payload.taskName }]
+      return [...state, { title: action.payload.taskName, id: Math.random() }]
     },
     [DELETE_TASK]: (state, action) => {
-      console.log(DELETE_TASK)
-      console.log(action.payload)
-      state.splice(action.payload.taskIndex, 1);
+      const taskIndex = index(state, action.payload.taskIndex.id);
+      state.splice(taskIndex, 1);
       return [...state];
     },
     [UPDATE_TASK]: (state, action) => {
-      console.log(UPDATE_TASK)
-      console.log(action)
-      state.splice(action.payload.taskParams.taskIndex, 1, { title:action.payload.taskParams.taskTitle });
+      state.splice(
+                    index(state, action.payload.taskParams.taskIndex), 
+                    1, 
+                    { title:action.payload.taskParams.taskTitle }
+                  );
       return [...state];
     },
     [CHECK_TASK]: (state, action) => {
-      console.log(CHECK_TASK)
-      console.log(action)
-      state[action.payload.taskParams.taskIndex].isDone = action.payload.taskParams.isDone;
+      const taskIndex = index(state, action.payload.taskParams.taskIndex);
+      state[taskIndex].isDone = action.payload.taskParams.isDone;
       return [...state];
     },
 }, TASKS);

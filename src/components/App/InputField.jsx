@@ -1,12 +1,10 @@
 import React, { Component } from 'react';
 
 export default class InputField extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
+  state = {
       value: '',
-    };
-  }
+  };
+  
   handleInputKey = (event) => {
     if (event.key === 'Enter'){
       this.props.onAddTrack(this.state.value);

@@ -4,9 +4,11 @@ import PropTypes from 'prop-types';
 export default class Task extends Component {
   static propTypes = {
     title: PropTypes.string.isRequired,
-    isDone: PropTypes.bool,
+    index: PropTypes.number.isRequired,
     onDelete: PropTypes.func.isRequired,
     onUpdate: PropTypes.func.isRequired,
+    onCheck: PropTypes.func.isRequired,
+    isDone: PropTypes.bool,
   }
   static defaultProps = {
     ...Component.defaultProps,

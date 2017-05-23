@@ -1,10 +1,13 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
 export default class InputField extends Component {
+  static propTypes = {
+    onAddTrack: PropTypes.func.isRequired,
+  }
   state = {
       value: '',
   };
-  
   handleInputKey = (event) => {
     if (event.key === 'Enter'){
       this.props.onAddTrack(this.state.value);

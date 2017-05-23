@@ -1,4 +1,4 @@
-export const completeTasksSelctor = (tasks, filter) => {
+export const getFilteredTasks = (tasks, filter) => {
   let selectedTasks = [];
   tasks.map((el) => {
     if (!el.isDone || (el.isDone && !filter)) {

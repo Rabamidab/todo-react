@@ -23,3 +23,5 @@ yarn-error.log*
 /config
 
 config/webpack.config.dev.js
+
+config/webpack.config.dev.js

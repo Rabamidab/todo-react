@@ -21,3 +21,5 @@ yarn-error.log*
 /.vscode
 
 /config
+
+config/webpack.config.dev.js

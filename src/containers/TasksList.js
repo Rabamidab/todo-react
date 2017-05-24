@@ -1,11 +1,12 @@
-import {connect} from 'react-redux';
-import {bindActionCreators} from 'redux';
-import { getFilteredTasks } from '../selectors/App';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 
+
+import { getFilteredTasks, getTasks, getFilter } from '../selectors/App';
 import TasksList from '../components/App/TasksList';
 
 const mapStateToProps = (state) => ({
-  taskStore: getFilteredTasks(state.task, state.filter),
+  taskStore: getFilteredTasks(getFilter(state), getTasks(state)),
 });
 
 const mapDispatchToProps = (dispatch) => bindActionCreators({

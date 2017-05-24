@@ -1,6 +1,6 @@
-import {connect} from 'react-redux';
-import {bindActionCreators} from 'redux';
-import { onFilter } from '../actions/AppActions';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { filterDoneTasks } from '../actions/AppActions';
 
 import Filter from '../components/App/Filter';
 
@@ -9,7 +9,7 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => bindActionCreators({
-  onFilter,
+  filterDoneTasks,
 }, dispatch);
 
 export default connect(mapStateToProps, mapDispatchToProps)(Filter);

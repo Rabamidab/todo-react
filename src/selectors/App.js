@@ -1,9 +1,17 @@
-export const getFilteredTasks = (tasks, filter) => {
-  let selectedTasks = [];
-  tasks.map((el) => {
-    if (!el.isDone || (el.isDone && !filter)) {
-      selectedTasks.push(el);
-    }
-  });
-  return selectedTasks;
+import _ from 'lodash';
+
+export const getFilteredTasks = (filter, tasks) => {
+  if (filter) {
+    return _.filter(tasks, { 'isDone': false });
+  }
+  return tasks;
 }
+
+export function getTasks(state) {
+  return state.tasks;
+}
+
+export function getFilter(state) {
+  return state.filter;
+}
+

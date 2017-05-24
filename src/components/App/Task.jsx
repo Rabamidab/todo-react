@@ -1,43 +1,41 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { taskProps } from '../../constants/AppConstants'
 
 export default class Task extends Component {
   static propTypes = {
-    title: PropTypes.string.isRequired,
-    index: PropTypes.number.isRequired,
-    onDelete: PropTypes.func.isRequired,
-    onUpdate: PropTypes.func.isRequired,
-    onCheck: PropTypes.func.isRequired,
-    isDone: PropTypes.bool,
-  }
-  static defaultProps = {
-    ...Component.defaultProps,
-    isDone: false,
+    deleteTask: PropTypes.func.isRequired,
+    updateTask: PropTypes.func.isRequired,
+    checkTask: PropTypes.func.isRequired,
+    task: taskProps,
   }
   handleChangeState = () => {
-    this.props.onCheck({
-      taskIndex: this.props.index,
-      isDone: !this.props.isDone
+    // console.log(this.props.el.id)
+    this.props.checkTask({
+      taskIndex: this.props.el.id,
+      isDone: !this.props.el.isDone,
     });
   }
   handleDelete = () => {
-    this.props.onDelete({ id: this.props.index });
+    this.props.deleteTask({ id: this.props.el.id });
   }
   handleUpdate = () => {
-    const newTaskTitle = prompt('Как переименуем задачу?', this.props.title);
-    this.props.onUpdate({ taskIndex: this.props.index, taskTitle: newTaskTitle });
+    const newTaskTitle = prompt('Как переименуем задачу?', this.props.el.title);
+    // console.log(newTaskTitle);
+    this.props.updateTask({ taskIndex: this.props.el.id, taskTitle: newTaskTitle });
   }
   render() {
+    // console.log(this.props)
     return (
       <li className="todolist__task">
-        <input 
-          className="todolist__checked" 
+        <input
+          className="todolist__checked"
           type="checkbox"
-          checked={this.props.isDone}
+          checked={this.props.el.isDone}
           onChange={this.handleChangeState}
         />
-        <span className="todolist__list-text">{this.props.title}</span>
-        <button className="todolist__edit-task" onClick={this.handleUpdate}>Edit</button> 
+        <span className="todolist__list-text">{this.props.el.title}</span>
+        <button className="todolist__edit-task" onClick={this.handleUpdate}>Edit</button>
         <button className="todolist__delete-task" onClick={this.handleDelete}>Delete</button>
       </li>
     );

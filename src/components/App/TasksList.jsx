@@ -1,11 +1,14 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 // import Task from './Task';
-import Task from '../../containers/Task'
+import Task from '../../containers/Task';
+import { taskProps } from '../../constants/AppConstants';
 
 export default class TasksList extends Component {
   static propTypes = {
-    taskStore: PropTypes.array.isRequired,
+    taskStore: PropTypes.arrayOf(
+      taskProps,
+    ).isRequired,
   }
   render() {
     return (
@@ -13,9 +16,10 @@ export default class TasksList extends Component {
         {
           this.props.taskStore.map((el, index) => {
             return (
-              <Task 
-                index={el.id} 
-                key={index} 
+              <Task
+                el={el}
+                id={el.id}
+                key={index}
                 title={el.title}
                 isDone={el.isDone}
               />

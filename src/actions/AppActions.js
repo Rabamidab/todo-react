@@ -1,22 +1,22 @@
 import { createAction } from 'redux-actions';
-import { ADD_TASK, DELETE_TASK, UPDATE_TASK, CHECK_TASK, FILTER_DONE_TASKS  } from '../constants/AppConstants';
+import { ADD_TASK, DELETE_TASK, UPDATE_TASK, CHECK_TASK, FILTER_DONE_TASKS } from '../constants/AppConstants';
 
-export const onAddTrack = createAction(
-  ADD_TASK, (taskName) => { return { taskName } }
+export const addTask = createAction(
+  ADD_TASK, (taskName) => { return { taskName }; },
 );
 
-export const onDelete = createAction(
-  DELETE_TASK, (taskIndex) => { return { taskIndex } }
+export const deleteTask = createAction(
+  DELETE_TASK, (taskIndex) => { return { taskIndex }; },
 );
 
-export const onUpdate = createAction(
-  UPDATE_TASK, (taskParams) => { return { taskParams } }
+export const updateTask = createAction(
+  UPDATE_TASK, (taskParams) => { return { taskParams }; },
 );
 
-export const onCheck = createAction(
-  CHECK_TASK, (taskParams) => { return { taskParams } }
+export const checkTask = createAction(
+  CHECK_TASK, (taskParams) => { return { taskParams }; },
 );
 
-export const onFilter = createAction(
-  FILTER_DONE_TASKS, (isFilterActive) => { return { isFilterActive } }
+export const filterDoneTasks = createAction(
+  FILTER_DONE_TASKS, (isFilterActive) => { return { isFilterActive }; },
 );

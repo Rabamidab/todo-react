@@ -15,3 +15,6 @@ export function getFilter(state) {
   return state.filter;
 }
 
+export const getSortedByOrderTasks = (tasks) => {
+  return _.sortBy(tasks, ['order']);
+}

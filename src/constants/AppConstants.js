@@ -5,6 +5,9 @@ export const DELETE_TASK = 'DELETE_TASK';
 export const UPDATE_TASK = 'UPDATE_TASK';
 export const CHECK_TASK = 'CHECK_TASK';
 export const FILTER_DONE_TASKS = 'FILTER_DONE_TASKS';
+export const UP_TASK = 'UP_TASK';
+export const DOWN_TASK = 'DOWN_TASK';
+export const FIND_TASK = 'FIND_TASK';
 
 export const taskProps = PropTypes.shape({
     id: PropTypes.number.isRequired,

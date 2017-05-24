@@ -19,7 +19,7 @@ export default class TasksList extends Component {
               <Task
                 el={el}
                 id={el.id}
-                key={index}
+                key={el.id}
                 title={el.title}
                 isDone={el.isDone}
               />

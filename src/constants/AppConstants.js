@@ -14,3 +14,10 @@ export const taskProps = PropTypes.shape({
     title: PropTypes.string.isRequired,
     isDone: PropTypes.bool.isRequired,
 });
+
+export const filterProps = PropTypes.shape({
+    isFilterActive: PropTypes.bool.isRequired,
+    isFilterDoneTasksActive: PropTypes.bool.isRequired,
+    isSearchActive: PropTypes.bool.isRequired,
+    wordForSearch: PropTypes.string.isRequired,
+});

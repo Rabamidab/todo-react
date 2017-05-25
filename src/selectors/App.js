@@ -12,9 +12,10 @@ export function getTasks(state) {
 }
 
 export function getFilter(state) {
-  return state.filter;
+  return state.filter.isFilterDoneTasksActive;
 }
 
 export const getSortedByOrderTasks = (tasks) => {
   return _.sortBy(tasks, ['order']);
 }
+

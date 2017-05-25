@@ -25,7 +25,8 @@ export const TASKS = [
 
 export const FILTER = {
   isFilterActive: false,
-  isActiveSearch: false,
+  isFilterDoneTasksActive: false,
+  isSearchActive: false,
   wordForSearch: '',
 }
 

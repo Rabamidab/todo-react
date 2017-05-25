@@ -1,16 +1,18 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { filterProps } from '../../constants/AppConstants'
 
 export default class Filter extends Component {
   static propTypes = {
-    isActiveFilterStore: PropTypes.bool.isRequired,
+    filter: PropTypes.objectOf(filterProps).isRequired,
     filterDoneTasks: PropTypes.func.isRequired,
   }
   changeState = () => {
-    this.props.filterDoneTasks({ bool: !this.props.isActiveFilterStore });
+    this.props.filterDoneTasks({ bool: !this.props.filter.isFilterDoneTasksActive });
   }
   render() {
-    if (this.props.isActiveFilterStore) {
+    console.log( filterProps )
+    if (this.props.filter.isFilterDoneTasksActive) {
       return (
         <a href="#app/filter" className="todolist__filter" onClick={this.changeState}>
           Показать выполненные задания

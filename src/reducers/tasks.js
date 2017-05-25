@@ -48,7 +48,7 @@ export default handleActions({
   [UPDATE_TASK]: (state, action) => {
     let thisState = [...state];
     const id = action.payload.taskParams.taskIndex;
-    thisState[_.findIndex(thisState, { id })].title = action.payload.taskParams.taskTitle;
+    _.find(thisState, { id }).title = action.payload.taskParams.taskTitle;
     return thisState;
   },
   [CHECK_TASK]: (state, action) => {

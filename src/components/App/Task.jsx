@@ -12,7 +12,6 @@ export default class Task extends Component {
     el: taskProps,
   }
   handleChangeState = () => {
-    // console.log(this.props.el.id)
     this.props.checkTask({
       taskIndex: this.props.el.id,
       isDone: !this.props.el.isDone,
@@ -23,7 +22,6 @@ export default class Task extends Component {
   }
   handleUpdate = () => {
     const newTaskTitle = prompt('Как переименуем задачу?', this.props.el.title);
-    // console.log(newTaskTitle);
     this.props.updateTask({ taskIndex: this.props.el.id, taskTitle: newTaskTitle });
   }
   handleUp = () => {
@@ -33,7 +31,6 @@ export default class Task extends Component {
     this.props.downTask({ id: this.props.el.id });
   }
   render() {
-    // console.log(this.props)
     return (
       <li className="todolist__task">
         <input

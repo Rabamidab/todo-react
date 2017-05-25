@@ -6,8 +6,7 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
 import reducer from './reducers';
 
-// import App from './App';
-import App from './containers/App';
+import App from './components/App/App';
 import StartPage from './components/StartPage';
 
 import './index.scss';

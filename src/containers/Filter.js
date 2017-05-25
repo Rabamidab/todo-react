@@ -7,7 +7,6 @@ import Filter from '../components/App/Filter';
 
 const mapStateToProps = (state) => ({
   filter: getDoneTasksFilter(state),
-  // taskStore: getFilteredTasks(getFilter(state), getTasks(state)),
 });
 
 const mapDispatchToProps = (dispatch) => bindActionCreators({

@@ -4,6 +4,8 @@ import Filter from '../../containers/Filter';
 import TasksList from '../../containers/TasksList'
 import SearchingField from '../../containers/SearchingField'
 
+import '../../ui/App.scss'
+
 export default class App extends Component {
   render() {
     return (

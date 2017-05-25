@@ -12,7 +12,7 @@ export const TASKS = [
   {
     id: 1,
     title: 'Получить почту',
-    isDone: false,
+    isDone: true,
     order: 1,
   },
   {
@@ -26,6 +26,5 @@ export const TASKS = [
 export const FILTER = {
   isDoneTasks: false,
   isFilterDoneTasksActive: false,
-  isSearchActive: false,
   wordForSearch: '',
 }

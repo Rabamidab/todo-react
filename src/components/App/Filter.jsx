@@ -4,8 +4,9 @@ import { filterProps } from '../../constants/AppConstants'
 
 export default class Filter extends Component {
   static propTypes = {
-    filter: PropTypes.objectOf(filterProps).isRequired,
+    filter: filterProps,
     filterDoneTasks: PropTypes.func.isRequired,
+    activateFilterDoneTasks: PropTypes.func.isRequired,
   }
   state = {
     message: 'Активируйте фильтр по выполненным заданиям',
@@ -46,7 +47,7 @@ export default class Filter extends Component {
           checked={this.state.isActive}
           onClick={this.onActiveHandle}
         />
-        <div onClick={this.changeState}>
+        <div className="todolist__filter-message" onClick={this.changeState}>
           {this.state.message}
         </div>
       </div>

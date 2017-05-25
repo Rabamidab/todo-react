@@ -4,9 +4,6 @@ import { deleteTask, updateTask, checkTask, upTask, downTask } from '../actions/
 
 import Task from '../components/App/Task';
 
-const mapStateToProps = (state) => ({
-});
-
 const mapDispatchToProps = (dispatch) => bindActionCreators({
   deleteTask,
   updateTask,
@@ -15,4 +12,4 @@ const mapDispatchToProps = (dispatch) => bindActionCreators({
   downTask,
 }, dispatch);
 
-export default connect(mapStateToProps, mapDispatchToProps)(Task);
+export default connect(null, mapDispatchToProps)(Task);

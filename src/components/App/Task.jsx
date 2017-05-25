@@ -7,7 +7,9 @@ export default class Task extends Component {
     deleteTask: PropTypes.func.isRequired,
     updateTask: PropTypes.func.isRequired,
     checkTask: PropTypes.func.isRequired,
-    task: taskProps,
+    upTask: PropTypes.func.isRequired,
+    downTask: PropTypes.func.isRequired,
+    el: taskProps,
   }
   handleChangeState = () => {
     // console.log(this.props.el.id)

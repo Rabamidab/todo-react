@@ -1,7 +1,6 @@
 import _ from 'lodash';
 
 export const getFilteredTasks = (filter, tasks) => {
-  // console.log(filter)
   if (filter.isFilterDoneTasksActive){
     if (filter.isDoneTasks) {
       return _.filter(tasks, { 'isDone': false });

@@ -43,8 +43,8 @@ export default class Task extends Component {
         <span className="todolist__list-text">{this.props.el.title}</span>
         <button className="todolist__edit-task" onClick={this.handleUpdate}>Edit</button>
         <button className="todolist__delete-task" onClick={this.handleDelete}>Delete</button>
-        <button className="todolist__up-task" onClick={this.handleUp}>Up</button>
-        <button className="todolist__down-task" onClick={this.handleDown}>Down</button>
+        <button className="todolist__up-task" onClick={this.handleUp}>↑</button>
+        <button className="todolist__down-task" onClick={this.handleDown}>↓</button>
       </li>
     );
   }

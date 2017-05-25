@@ -1,5 +1,14 @@
 import { createAction } from 'redux-actions';
-import { ADD_TASK, DELETE_TASK, UPDATE_TASK, CHECK_TASK, FILTER_DONE_TASKS, UP_TASK, DOWN_TASK, FIND_TASK } from '../constants/AppConstants';
+import { 
+  ADD_TASK, 
+  DELETE_TASK, 
+  UPDATE_TASK, 
+  CHECK_TASK, 
+  FILTER_DONE_TASKS, 
+  UP_TASK, DOWN_TASK, 
+  FIND_TASK,
+  ACTIVATE_FILTER_DONE_TASKS
+} from '../constants/AppConstants';
 
 export const addTask = createAction(
   ADD_TASK, (taskName) => { return { taskName }; },
@@ -18,7 +27,7 @@ export const checkTask = createAction(
 );
 
 export const filterDoneTasks = createAction(
-  FILTER_DONE_TASKS, (isFilterActive) => { return { isFilterActive }; },
+  FILTER_DONE_TASKS, (filterParams) => { return { filterParams }; },
 );
 
 export const upTask = createAction(
@@ -31,4 +40,8 @@ export const downTask = createAction(
 
 export const findTask = createAction(
   FIND_TASK, (taskTitle) => { return { taskTitle }; },
+);
+
+export const activateFilterDoneTasks = createAction(
+  ACTIVATE_FILTER_DONE_TASKS, (filterParams) => { return { filterParams }; },
 );

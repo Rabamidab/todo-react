@@ -24,10 +24,8 @@ export const TASKS = [
 ];
 
 export const FILTER = {
-  isFilterActive: false,
+  isDoneTasks: false,
   isFilterDoneTasksActive: false,
   isSearchActive: false,
   wordForSearch: '',
 }
-
-// export { KEYS, TASKS };

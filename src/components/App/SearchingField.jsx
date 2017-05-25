@@ -19,6 +19,7 @@ export default class SearchingField extends Component {
         type="text"
         onChange={this.handleChange}
         value={this.state.value}
+        placeholder="Поиск"
       />
     );
   }

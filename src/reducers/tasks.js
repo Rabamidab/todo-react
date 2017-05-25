@@ -1,7 +1,7 @@
 import { handleActions } from 'redux-actions';
 import _ from 'lodash';
 import { TASKS } from '../variables';
-import { ADD_TASK, DELETE_TASK, UPDATE_TASK, CHECK_TASK, UP_TASK, DOWN_TASK, FIND_TASK } from '../constants/AppConstants';
+import { ADD_TASK, DELETE_TASK, UPDATE_TASK, CHECK_TASK, UP_TASK, DOWN_TASK } from '../constants/AppConstants';
 
 function shiftTask(state, action) {
   const id = action.payload.taskIndex.id;
@@ -66,16 +66,16 @@ export default handleActions({
   [DOWN_TASK]: (state, action) => {
     return shiftTask(state, action);
   },
-  [FIND_TASK]: (state, action) => {
-    // console.log(action.payload.taskTitle)
-    let newState = _.filter(state, (st) => {
-      if (st.title.indexOf(action.payload.taskTitle) !== -1 || action.payload.taskTitle === ''){
-        return true;
-      } else {
-        return false;
-      }
-    });
-    console.log(newState)
-    return newState;
-  },
+  // [FIND_TASK]: (state, action) => {
+  //   console.log(action.payload.taskTitle)
+  //   let newState = _.filter(state, (st) => {
+  //     if (st.title.indexOf(action.payload.taskTitle) !== -1 || action.payload.taskTitle === ''){
+  //       return true;
+  //     } else {
+  //       return false;
+  //     }
+  //   });
+  //   console.log(newState)
+  //   return newState;
+  // },
 }, TASKS);

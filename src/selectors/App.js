@@ -48,3 +48,10 @@ export function getSearchFilter(state) {
 export const getSortedByOrderTasks = (tasks) => {
   return _.sortBy(tasks, ['order']);
 };
+
+export const getEquateOrderByIndexTasks = (tasks) => {
+  tasks.forEach((el, index) => {
+    el.order = index;
+  });
+  return tasks;
+};

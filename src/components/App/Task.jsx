@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { taskProps } from '../../constants/AppConstants'
+import { taskProps } from '../../constants/AppConstants';
 
 export default class Task extends Component {
   static propTypes = {
@@ -10,6 +10,13 @@ export default class Task extends Component {
     upTask: PropTypes.func.isRequired,
     downTask: PropTypes.func.isRequired,
     el: taskProps,
+  }
+  static defaultProps = {
+    el: {
+      id: Math.random(),
+      title: 'Безымянный',
+      isDone: false,
+    },
   }
   handleChangeState = () => {
     this.props.checkTask({

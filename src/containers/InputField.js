@@ -6,7 +6,7 @@ import { getSearchFilter } from '../selectors/App';
 import InputField from '../components/App/InputField';
 
 const mapStateToProps = (state) => ({
-    filter: getSearchFilter(state),
+  filter: getSearchFilter(state),
 });
 
 const mapDispatchToProps = (dispatch) => bindActionCreators({

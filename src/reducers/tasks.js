@@ -30,29 +30,29 @@ function shiftTask(state, action) {
 export default handleActions({
   [ADD_TASK]: (state, action) => {
     return [
-      ...state, 
-      { 
+      ...state,
+      {
         title: action.payload.taskName,
         id: Math.random(),
         isDone: false,
-        order: state.length
-      }
+        order: state.length,
+      },
     ];
   },
   [DELETE_TASK]: (state, action) => {
-    let thisState = [...state];
+    const thisState = [...state];
     const id = action.payload.taskIndex.id;
     thisState.splice(_.findIndex(thisState, { id }), 1);
     return thisState;
   },
   [UPDATE_TASK]: (state, action) => {
-    let thisState = [...state];
+    const thisState = [...state];
     const id = action.payload.taskParams.taskIndex;
     _.find(thisState, { id }).title = action.payload.taskParams.taskTitle;
     return thisState;
   },
   [CHECK_TASK]: (state, action) => {
-    let thisState = [...state];
+    const thisState = [...state];
     const id = action.payload.taskParams.taskIndex;
     _.find(thisState, { id }).isDone = action.payload.taskParams.isDone;
     return thisState;

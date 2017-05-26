@@ -27,4 +27,4 @@ export const FILTER = {
   isDoneTasks: false,
   isFilterDoneTasksActive: false,
   wordForSearch: '',
-}
+};

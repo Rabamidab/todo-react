@@ -1,13 +1,14 @@
 import { createAction } from 'redux-actions';
-import { 
-  ADD_TASK, 
-  DELETE_TASK, 
-  UPDATE_TASK, 
-  CHECK_TASK, 
-  FILTER_DONE_TASKS, 
-  UP_TASK, DOWN_TASK, 
+import {
+  ADD_TASK,
+  DELETE_TASK,
+  UPDATE_TASK,
+  CHECK_TASK,
+  FILTER_DONE_TASKS,
+  UP_TASK,
+  DOWN_TASK,
   FIND_TASK,
-  ACTIVATE_FILTER_DONE_TASKS
+  ACTIVATE_FILTER_DONE_TASKS,
 } from '../constants/AppConstants';
 
 export const addTask = createAction(

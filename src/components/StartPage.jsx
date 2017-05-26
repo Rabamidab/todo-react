@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 
-import '../ui/StartPage.scss'
+import '../ui/StartPage.scss';
 
 export default class StartPage extends Component {
   render() {

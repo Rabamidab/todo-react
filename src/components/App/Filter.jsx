@@ -1,42 +1,36 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { filterProps } from '../../constants/AppConstants'
+import { filterProps } from '../../constants/AppConstants';
 
 export default class Filter extends Component {
   static propTypes = {
-    filter: filterProps,
+    filter: filterProps.isRequired,
     filterDoneTasks: PropTypes.func.isRequired,
     activateFilterDoneTasks: PropTypes.func.isRequired,
   }
   state = {
-    message: 'Активируйте фильтр по выполненным заданиям',
-    messageForHide: 'Показать активные задания',
-    messageForShow: 'Показать выполненные задания',
-    messageForActive: 'Активируйте фильтр по выполненным заданиям',
+    messageForShowUndone: 'Показать активные задания',
+    messageForShowDone: 'Показать выполненные задания',
+    messageForActivate: 'Активируйте фильтр по выполненным заданиям',
     isActive: false,
   };
-  changeState = () => {
-    if (this.props.filter.isFilterDoneTasksActive){
-      this.props.filterDoneTasks({ bool: !this.props.filter.isDoneTasks });
-      this.changeTriggerView();
-    }
-  }
   onActiveHandle = () => {
     this.props.activateFilterDoneTasks({ bool: !this.props.filter.isFilterDoneTasksActive });
-    this.setState({ isActive: !this.props.filter.isFilterDoneTasksActive, });
-
-    if (this.props.filter.isFilterDoneTasksActive){
-      this.setState({ message: this.state.messageForActive, });
-    } else {
-      this.changeTriggerView()
+    this.setState({ isActive: !this.props.filter.isFilterDoneTasksActive });
+  }
+  changeState = () => {
+    if (this.props.filter.isFilterDoneTasksActive) {
+      this.props.filterDoneTasks({ bool: !this.props.filter.isDoneTasks });
     }
   }
-  changeTriggerView = () => {
-    if (this.props.filter.isDoneTasks) {
-      this.setState({ message: this.state.messageForHide, });
-    } else {
-      this.setState({ message: this.state.messageForShow, });
+  setButtonView = () => {
+    if (this.props.filter.isFilterDoneTasksActive) {
+      if (this.props.filter.isDoneTasks) {
+        return this.state.messageForShowDone;
+      }
+      return this.state.messageForShowUndone;
     }
+    return this.state.messageForActivate;
   }
   render() {
     return (
@@ -47,9 +41,9 @@ export default class Filter extends Component {
           checked={this.state.isActive}
           onClick={this.onActiveHandle}
         />
-        <div className="todolist__filter-message" onClick={this.changeState}>
-          {this.state.message}
-        </div>
+        <button className="todolist__filter-message" onClick={this.changeState}>
+          {this.setButtonView()}
+        </button>
       </div>
     );
   }

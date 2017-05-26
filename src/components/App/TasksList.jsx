@@ -13,16 +13,10 @@ export default class TasksList extends Component {
     return (
       <ul className="todolist__list">
         {
-          this.props.taskStore.map((el, index) => {
+          this.props.taskStore.map((el) => {
             return (
               <Task
-                el={ 
-                  {
-                    id: el.id,
-                    title: el.title,
-                    isDone: el.isDone,
-                  } 
-                }
+                el={{ id: el.id, title: el.title, isDone: el.isDone }}
                 key={el.id}
               />
             );

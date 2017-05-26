@@ -1,13 +1,19 @@
 import { connect } from 'react-redux';
 
-import { getSearchingTasks, getFilteredTasks, getTasks, getSearchFilter, getDoneTasksFilter } from '../selectors/App';
+import { filteredTasksSelector ,searchingTasksSelector, getSearchingTasks, getFilteredTasks, getTasks, getSearchFilter, getDoneTasksFilter } from '../selectors/App';
 import TasksList from '../components/App/TasksList';
 
+// const mapStateToProps = (state) => ({
+//     order: getOrder(state),
+//     tickets: getOrderTickets(state),
+//     seance: getOrderSeance(state),
+// });
+
+
+
 const mapStateToProps = (state) => ({
-  taskStore: getFilteredTasks(
-    getDoneTasksFilter(state), 
-    getSearchingTasks(getSearchFilter(state), getTasks(state))
-  ),
+  taskStore: filteredTasksSelector(state)
+  
 });
 
 export default connect(mapStateToProps, null)(TasksList);

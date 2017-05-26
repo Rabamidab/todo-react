@@ -6,36 +6,36 @@ export default class Task extends Component {
   static propTypes = {
     deleteTask: PropTypes.func.isRequired,
     updateTask: PropTypes.func.isRequired,
-    checkTask: PropTypes.func.isRequired,
     upTask: PropTypes.func.isRequired,
     downTask: PropTypes.func.isRequired,
-    el: taskProps,
+    task: taskProps,
   }
   static defaultProps = {
-    el: {
+    task: {
       id: Math.random(),
       title: 'Безымянный',
       isDone: false,
     },
   }
-  handleChangeState = () => {
-    this.props.checkTask({
-      taskIndex: this.props.el.id,
-      isDone: !this.props.el.isDone,
+  handleCheck = () => {
+    this.props.updateTask({
+      taskIndex: this.props.task.id,
+      isDone: !this.props.task.isDone,
+      taskTitle: '',
     });
   }
   handleDelete = () => {
-    this.props.deleteTask({ id: this.props.el.id });
+    this.props.deleteTask({ id: this.props.task.id });
   }
   handleUpdate = () => {
-    const newTaskTitle = prompt('Как переименуем задачу?', this.props.el.title);
-    this.props.updateTask({ taskIndex: this.props.el.id, taskTitle: newTaskTitle });
+    const newTaskTitle = prompt('Как переименуем задачу?', this.props.task.title);
+    this.props.updateTask({ taskIndex: this.props.task.id, taskTitle: newTaskTitle, isDone: this.props.task.isDone });
   }
   handleUp = () => {
-    this.props.upTask({ id: this.props.el.id });
+    this.props.upTask({ id: this.props.task.id, order: this.props.task.order-2 });
   }
   handleDown = () => {
-    this.props.downTask({ id: this.props.el.id });
+    this.props.downTask({ id: this.props.task.id, order: this.props.task.order+2 });
   }
   render() {
     return (
@@ -43,10 +43,10 @@ export default class Task extends Component {
         <input
           className="todolist__checked"
           type="checkbox"
-          checked={this.props.el.isDone}
-          onChange={this.handleChangeState}
+          checked={this.props.task.isDone}
+          onChange={this.handleCheck}
         />
-        <span className="todolist__list-text">{this.props.el.title}</span>
+        <span className="todolist__list-text">{this.props.task.title}</span>
         <button className="todolist__edit-task" onClick={this.handleUpdate}>Edit</button>
         <button className="todolist__delete-task" onClick={this.handleDelete}>Delete</button>
         <button className="todolist__up-task" onClick={this.handleUp}>↑</button>

@@ -1,21 +1,13 @@
 import { handleActions } from 'redux-actions';
 import _ from 'lodash';
 import { TASKS } from '../variables';
-import { ADD_TASK, DELETE_TASK, UPDATE_TASK, CHECK_TASK, UP_TASK, DOWN_TASK } from '../constants/AppConstants';
+import { ADD_TASK, DELETE_TASK, UPDATE_TASK, UP_TASK, DOWN_TASK } from '../constants/AppConstants';
 
 function shiftTask(state, action) {
-  const id = action.payload.taskIndex.id;
+  const id = action.payload.taskParams.id;
   let thisState = [...state];
-  switch (action.type) {
-    case UP_TASK:
-      _.find(thisState, { id }).order -= 2;
-      break;
-    case DOWN_TASK:
-      _.find(thisState, { id }).order += 2;
-      break;
-    default:
-      break;
-  }
+
+  _.find(thisState, { id }).order = action.payload.taskParams.order;
   // сортирую список по возрастанию по значению order
   thisState = _.sortBy(thisState, ['order']);
   // присваиваю order значение index'a каждого элемента массива,
@@ -48,13 +40,12 @@ export default handleActions({
   [UPDATE_TASK]: (state, action) => {
     const thisState = [...state];
     const id = action.payload.taskParams.taskIndex;
-    _.find(thisState, { id }).title = action.payload.taskParams.taskTitle;
-    return thisState;
-  },
-  [CHECK_TASK]: (state, action) => {
-    const thisState = [...state];
-    const id = action.payload.taskParams.taskIndex;
+    const taskTitle = action.payload.taskParams.taskTitle;
+    if (taskTitle !== '') {
+      _.find(thisState, { id }).title = action.payload.taskParams.taskTitle; 
+    }
     _.find(thisState, { id }).isDone = action.payload.taskParams.isDone;
+
     return thisState;
   },
   [UP_TASK]: (state, action) => {

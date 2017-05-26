@@ -9,41 +9,37 @@ export default class Filter extends Component {
     activateFilterDoneTasks: PropTypes.func.isRequired,
   }
   state = {
-    messageForShowUndone: 'Показать активные задания',
-    messageForShowDone: 'Показать выполненные задания',
-    messageForActivate: 'Активируйте фильтр по выполненным заданиям',
-    isActive: false,
+    messageForShowUndone: 'Активные задания',
+    messageForShowDone: 'Выполненные задания',
+    allMessages: 'Все задания',
+    value: 'allMessages',
   };
-  onActiveHandle = () => {
-    this.props.activateFilterDoneTasks({ bool: !this.props.filter.isFilterDoneTasksActive });
-    this.setState({ isActive: !this.props.filter.isFilterDoneTasksActive });
-  }
-  changeState = () => {
-    if (this.props.filter.isFilterDoneTasksActive) {
-      this.props.filterDoneTasks({ bool: !this.props.filter.isDoneTasks });
+  handleChange = (event) => {
+    this.setState({value: event.target.value});
+    switch (event.target.value) {
+      case 'allMessages':
+        this.props.activateFilterDoneTasks({ bool: false });
+        break;
+      case 'messageForShowUndone':
+        this.props.activateFilterDoneTasks({ bool: true });
+        this.props.filterDoneTasks({ bool: true });
+        break;
+      case 'messageForShowDone':
+        this.props.activateFilterDoneTasks({ bool: true });
+        this.props.filterDoneTasks({ bool: false });
+        break;
+      default:
+        break;
     }
-  }
-  setButtonView = () => {
-    if (this.props.filter.isFilterDoneTasksActive) {
-      if (this.props.filter.isDoneTasks) {
-        return this.state.messageForShowDone;
-      }
-      return this.state.messageForShowUndone;
-    }
-    return this.state.messageForActivate;
   }
   render() {
     return (
-      <div className="todolist__filter">
-        <input
-          className="todolist__filter-activator"
-          type="checkbox"
-          checked={this.state.isActive}
-          onClick={this.onActiveHandle}
-        />
-        <button className="todolist__filter-message" onClick={this.changeState}>
-          {this.setButtonView()}
-        </button>
+      <div>
+        <select className="todolist__select" value={this.state.value} onChange={this.handleChange}>
+            <option value="allMessages">{this.state.allMessages}</option>
+            <option value="messageForShowUndone">{this.state.messageForShowUndone}</option>
+            <option value="messageForShowDone">{this.state.messageForShowDone}</option>
+        </select>
       </div>
     );
   }

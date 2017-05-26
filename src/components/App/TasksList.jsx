@@ -16,7 +16,7 @@ export default class TasksList extends Component {
           this.props.taskStore.map((el) => {
             return (
               <Task
-                el={{ id: el.id, title: el.title, isDone: el.isDone }}
+                task={{ id: el.id, title: el.title, isDone: el.isDone, order: el.order }}
                 key={el.id}
               />
             );

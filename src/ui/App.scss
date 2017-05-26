@@ -62,40 +62,10 @@
     float: left;
   }
 
-  &__filter{
-    position: relative;
-    box-sizing: border-box;
-    display: block;
-    width: 100%;
-    padding: 0 30px;
-    border: 1px dotted #FFF * 0.8;
-    box-shadow: 0px 30px 50px 0px rgba(0,0,0,0.05);
-    user-select: none;
-    &:hover{
-      // background-color: #FFF * 0.8;
-    }
+  &__select{
+    float: right;
   }
-
-  &__filter-activator{
-    margin: 0;
-    margin-left: 1rem;
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 100%;
-    background-color: #FFF
-  }
-
-  &__filter-message{
-    display: block;
-    width: 100%;
-    height: 4rem;
-    border: none;
-    background-color: #FFF * 0.9;
-    color: #aaa;
-    font-size: 1.3rem;
-    cursor: pointer;
-  }
+  
 }
 
 @media (max-width: 800px) {

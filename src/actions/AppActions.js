@@ -3,7 +3,6 @@ import {
   ADD_TASK,
   DELETE_TASK,
   UPDATE_TASK,
-  CHECK_TASK,
   FILTER_DONE_TASKS,
   UP_TASK,
   DOWN_TASK,
@@ -23,20 +22,16 @@ export const updateTask = createAction(
   UPDATE_TASK, (taskParams) => { return { taskParams }; },
 );
 
-export const checkTask = createAction(
-  CHECK_TASK, (taskParams) => { return { taskParams }; },
-);
-
 export const filterDoneTasks = createAction(
   FILTER_DONE_TASKS, (filterParams) => { return { filterParams }; },
 );
 
 export const upTask = createAction(
-  UP_TASK, (taskIndex) => { return { taskIndex }; },
+  UP_TASK, (taskParams) => { return { taskParams }; },
 );
 
 export const downTask = createAction(
-  DOWN_TASK, (taskIndex) => { return { taskIndex }; },
+  DOWN_TASK, (taskParams) => { return { taskParams }; },
 );
 
 export const findTask = createAction(

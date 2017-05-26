@@ -4,7 +4,10 @@ import { getSearchingTasks, getFilteredTasks, getTasks, getSearchFilter, getDone
 import TasksList from '../components/App/TasksList';
 
 const mapStateToProps = (state) => ({
-  taskStore: getFilteredTasks(getDoneTasksFilter(state), getSearchingTasks(getSearchFilter(state), getTasks(state))),
+  taskStore: getFilteredTasks(
+    getDoneTasksFilter(state), 
+    getSearchingTasks(getSearchFilter(state), getTasks(state))
+  ),
 });
 
 export default connect(mapStateToProps, null)(TasksList);

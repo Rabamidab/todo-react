@@ -7,7 +7,6 @@ import Task from '../components/App/Task';
 const mapDispatchToProps = (dispatch) => bindActionCreators({
   deleteTask,
   updateTask,
-  checkTask,
   upTask,
   downTask,
 }, dispatch);

@@ -1,15 +1,15 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 
 import '../ui/StartPage.scss';
 
-export default class StartPage extends Component {
-  render() {
-    return (
-      <div className="welcome">
-        <h2 className="welcome__header">Чтобы открыть приложение нажмите на кнопку.</h2>
-        <Link to="/app" className="welcome__goto-app">Открыть</Link>
-      </div>
-    );
-  }
+const StartPage = () => {
+  return (
+    <div className="welcome">
+      <h2 className="welcome__header">Чтобы открыть приложение нажмите на кнопку.</h2>
+      <Link to="/app" className="welcome__goto-app">Открыть</Link>
+    </div>
+  );
 }
+
+export default StartPage;
